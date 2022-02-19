@@ -1,8 +1,12 @@
-name: Testing
+name: CI/CD
 
 on:
+  schedule:
+    - cron: 0 12 * * 0
+
   push:
     branches: [main]
+    tags: [v*.*.*]
 
   pull_request:
     branches: [main]
@@ -98,3 +102,37 @@ jobs:
       - name: Run pytest
         run: |
           poetry run pytest --cov=speny --cov=tests
+
+  build:
+    name: Build${{ github.event_name == 'push' && ' and publish ' || ' ' }}Docker image
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login against registry ${{ env.registry }}
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.registry }}
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      - name: Extract Docker metadata
+        id: extract-docker-metadata
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.registry }}/${{ env.image }}
+
+      - name: Build${{ github.event_name == 'push' && ' and publish ' || ' ' }}Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: ${{ github.event_name == 'push' }}
+          tags: ${{ steps.extract-docker-metadata.outputs.tags }}
+          labels: ${{ steps.extract-docker-metadata.outputs.labels }}
