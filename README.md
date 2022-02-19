@@ -1,6 +1,6 @@
 # Speny
 
-Spending tracker Telegram bot.
+Telegram bot for tracking spending.
 
 ## License
 
