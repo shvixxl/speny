@@ -67,9 +67,30 @@ jobs:
         run: |
           poetry run pytest --cov=speny --cov=tests
 
+  codeql:
+    name: Run CodeQL analysis
+    needs: [test-lint]
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: python
+
+      - name: Build CodeQL
+        uses: github/codeql-action/autobuild@v1
+
+      - name: Run CodeQL analysis
+        uses: github/codeql-action/analyze@v1
+
   build:
     name: Build${{ github.event_name != 'pull_request' && ' ' || ' and publish ' }}Docker image
-    needs: [test-lint]
+    needs: [test-lint, codeql]
     runs-on: ubuntu-latest
     permissions:
       packages: write
