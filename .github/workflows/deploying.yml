@@ -16,7 +16,6 @@ env:
 jobs:
   build:
     name: Build${{ github.event_name == 'push' && ' and publish ' || ' ' }}Docker image
-    needs: [lint, test]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -51,7 +50,7 @@ jobs:
 
   deploy:
     name: Deploy Docker image
-    needs: [lint, test]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Build Docker image
