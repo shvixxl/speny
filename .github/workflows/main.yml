@@ -15,6 +15,9 @@ env:
   python_version: 3.10.2
   cosign_version: 1.5.2
 
+  registry: ghcr.io
+  image_name: ${{ github.repository }}
+
 permissions:
   contents: read
 
@@ -95,7 +98,7 @@ jobs:
         id: extract-docker-metadata
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.registry }}/${{ env.image }}
+          images: ${{ env.registry }}/${{ env.image_name }}
 
       - name: Build${{ github.event_name != 'pull_request' && ' ' || ' and push ' }}Docker image
         id: build-and-push
