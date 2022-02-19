@@ -46,8 +46,8 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name == 'push' }}
-          tags: ${{ id.extract-docker-metadata.outputs.tags }}
-          labels: ${{ id.extract-docker-metadata.outputs.labels }}
+          tags: ${{ steps.extract-docker-metadata.outputs.tags }}
+          labels: ${{ steps.extract-docker-metadata.outputs.labels }}
 
   deploy:
     name: Deploy Docker image
