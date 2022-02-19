@@ -124,6 +124,7 @@ jobs:
           cosign-release: v${{ env.cosign-version }}
 
       - name: Login against ${{ env.registry }} registry
+        if: ${{ github.event_name != 'pull_request' }}
         uses: docker/login-action@v1
         with:
           registry: ${{ env.registry }}
