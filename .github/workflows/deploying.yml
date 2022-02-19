@@ -42,7 +42,7 @@ jobs:
           images: ${{ env.registry }}/${{ env.image }}
 
       - name: Build${{ env.push && ' and publish ' || ' ' }}Docker image
-        uses: docker/build-push-action
+        uses: docker/build-push-action@v2
         with:
           context: .
           push: ${{ env.push }}
