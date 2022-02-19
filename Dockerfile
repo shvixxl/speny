@@ -28,6 +28,11 @@ RUN poetry install --no-dev
 
 FROM base AS runner
 
+RUN apt-get update \
+ && apt-get upgrade -y \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
 COPY --from=builder $VENV $VENV
 
 WORKDIR /app
