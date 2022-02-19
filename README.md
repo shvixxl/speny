@@ -1,2 +1,7 @@
-# speny
-Spending tracker Telegram bot Speny.
+# Speny
+
+Spending tracker Telegram bot.
+
+## License
+
+[MIT](LICENSE)
