@@ -98,6 +98,26 @@ jobs:
         run: |
           poetry run pytest --cov=speny --cov=tests
 
+  analyse:
+    name: Run analyses
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: python
+
+      - name: Build CodeQL
+        uses: github/codeql-action/autobuild@v1
+
+      - name: Run CodeQL analysis
+        uses: github/codeql-action/analyze@v1
+
   build:
     name: Run builds
     runs-on: ubuntu-latest
