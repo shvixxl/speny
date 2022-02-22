@@ -98,8 +98,8 @@ jobs:
         run: |
           poetry run pytest --cov=speny --cov=tests
 
-  codeql:
-    name: Run CodeQL analysis
+  analyse:
+    name: Run analyses
     runs-on: ubuntu-latest
     permissions:
       security-events: write
