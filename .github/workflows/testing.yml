@@ -96,7 +96,10 @@ jobs:
 
       - name: Run pytest
         run: |
-          poetry run pytest --cov=speny --cov=tests
+          poetry run pytest --cov=speny --cov=tests --cov-report=xml
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v2
 
   analyse:
     name: Run analyses
