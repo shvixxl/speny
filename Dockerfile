@@ -41,6 +41,4 @@ WORKDIR /app
 
 COPY . .
 
-EXPOSE $PORT
-
 CMD ["python", "-m", "speny.main"]
