@@ -14,25 +14,25 @@ jobs:
     environment:
       name: production
       url: https://t.me/spenybot
-    env:
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     steps:
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
 
       - name: Authenticate to Heroku Container Registry
-        run: |
-          heroku container:login
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.HEROKU_IMAGE_NAME }}
+          username: _
+          password: ${{ secrets.HEROKU_API_KEY }}
 
-      - name: Build Docker image
+      - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          tags: speny
-
-      - name: Push Docker image
-        run: |
-          heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} speny
+          push: true
+          tags: ${{ secrets.HEROKU_IMAGE_NAME }}
 
       - name: Deploy Docker image
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} speny
+          heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} ${{ secrets.HEROKU_IMAGE_NAME }}
