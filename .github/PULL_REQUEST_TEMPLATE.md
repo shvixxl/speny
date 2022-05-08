@@ -1,11 +1,15 @@
-## Description
+# Description
 
-- [List of changes]
+- [List of all changes]
 
 ---
 
-[Explanation of changes]
+[Additional information about changes]
 
-### Related Pull Requests
+## Related PRs
 
 - [List of related pull requests]
+
+## Tasks
+
+- [ ] [List of tasks that must be done before merging this pull request]
