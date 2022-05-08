@@ -185,3 +185,9 @@ cython_debug/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+
+## Speny
+
+# Client Secrets
+client_secrets.json
