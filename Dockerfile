@@ -33,11 +33,15 @@ FROM base AS runner
 RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && groupadd app \
+ && useradd --shell /sbin/nologin --gid app app
 
-COPY --from=builder $VENV $VENV
+USER app
 
-WORKDIR /app
+COPY --from=builder --chown=app:app $VENV $VENV
+
+WORKDIR $HOME/app
 
 COPY . .
 
