@@ -1,0 +1,22 @@
+name: 🔨 Build
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+env:
+  python_version: 3.10
+
+jobs:
+  run-builds:
+    name: 🔨 Build image
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: 🔨 Build Docker
+        uses: docker/build-push-action@v3
