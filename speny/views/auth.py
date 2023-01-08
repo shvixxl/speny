@@ -2,10 +2,9 @@
 
 from typing import NoReturn
 
-from aiohttp.web import RouteTableDef, Request, HTTPFound
+from aiohttp.web import HTTPFound, Request, RouteTableDef
 
 from speny.config import settings
-
 
 routes = RouteTableDef()
 

@@ -2,9 +2,8 @@
 
 from logging import INFO
 
-from aiogram.utils.backoff import BackoffConfig
 from aiogram.dispatcher.dispatcher import DEFAULT_BACKOFF_CONFIG
-
+from aiogram.utils.backoff import BackoffConfig
 from pydantic import (
     BaseSettings,
 )

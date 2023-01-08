@@ -1,3 +1,7 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "speny"
 version = "0.1.0"
@@ -17,15 +21,20 @@ google-auth-oauthlib = "^0.5.0"
 google-auth-httplib2 = "^0.1.0"
 loguru = "^0.6.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0"
+
+[tool.poetry.group.test.dependencies]
 pytest = "^7.0.1"
-pylint = "^2.12.2"
 pytest-cov = "^3.0.0"
 pytest-mock = "^3.7.0"
+ruff = "^0.0"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff]
+select = ["F", "E", "W", "I", "UP", "C4", "B", "RUF"]
 
-[tool.pylint.'MASTER']
-extension-pkg-whitelist = "pydantic"
+[tool.pytest.ini_options]
+addopts = [
+    "--cov=speny",
+    "--cov=tests",
+]

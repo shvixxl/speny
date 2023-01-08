@@ -2,15 +2,13 @@
 
 import asyncio
 
+from aiogram import Bot, Dispatcher
 from aiohttp import web
 
-from aiogram import Bot, Dispatcher
-
 from speny.config import settings
-from speny.logging import logger
 from speny.handlers import router
+from speny.logging import logger
 from speny.views import add_routes
-
 
 app = web.Application()
 
