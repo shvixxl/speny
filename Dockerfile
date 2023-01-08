@@ -1,10 +1,12 @@
 FROM python:3.10-slim AS base
 
+ENV POETRY_HOME="/opt/poetry"
+ENV VENV="/opt/.venv"
+
+ENV PATH="$POETRY_HOME/bin:$VENV/bin:$PATH"
+
 
 FROM base AS builder
-
-ENV POETRY_HOME="/etc/poetry"
-ENV PATH="$POETRY_HOME/bin:$VENV/bin:$PATH"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -17,8 +19,9 @@ WORKDIR /opt
 
 COPY poetry.lock pyproject.toml ./
 
-RUN POETRY_VIRTUALENVS_IN_PROJECT="true" \
-    poetry install --no-interaction
+ENV POETRY_VIRTUALENVS_IN_PROJECT="true"
+
+RUN poetry install --no-interaction
 
 
 FROM base AS runner
@@ -31,7 +34,6 @@ RUN apt-get update \
  && useradd --shell /sbin/nologin --gid app app
 
 ENV HOME="/home/app"
-ENV VENV="/opt/.venv"
 
 USER app
 

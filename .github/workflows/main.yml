@@ -1,4 +1,4 @@
-name: 🧪 Test
+name: 🚀 Main
 
 on:
   push:
@@ -55,3 +55,13 @@ jobs:
       - name: 🧪 Run tests
         run: |
           poetry run pytest
+
+  run-builds:
+    name: 🔨 Build image
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: 🔨 Build Docker
+        uses: docker/build-push-action@v3
