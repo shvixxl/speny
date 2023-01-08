@@ -4,7 +4,7 @@ FROM python:3.10-slim AS base
 FROM base AS builder
 
 ENV POETRY_HOME="/etc/poetry"
-ENV POETRY_VERSION="1.1.13"
+ENV PATH="$POETRY_HOME/bin:$VENV/bin:$PATH"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -13,14 +13,12 @@ RUN apt-get update \
         curl \
  && curl -sSL https://install.python-poetry.org | python3 -
 
-ENV PATH="$POETRY_HOME/bin:$VENV/bin:$PATH"
-ENV POETRY_VIRTUALENVS_IN_PROJECT="true"
-
 WORKDIR /opt
 
 COPY poetry.lock pyproject.toml ./
 
-RUN poetry install --no-interaction
+RUN POETRY_VIRTUALENVS_IN_PROJECT="true" \
+    poetry install --no-interaction
 
 
 FROM base AS runner
