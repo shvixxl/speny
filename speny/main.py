@@ -23,7 +23,7 @@ dp.include_router(router)
 async def start_web() -> None:
     """Starts web server."""
 
-    logger.info('Starting web server...')
+    logger.info("Starting web server...")
 
     runner = web.AppRunner(app)
 
@@ -40,14 +40,14 @@ async def start_web() -> None:
 async def start_bot() -> None:
     """Starts bot."""
 
-    logger.info('Initializing bot...')
+    logger.info("Initializing bot...")
 
     bot = Bot(
         settings.BOT_TOKEN,
-        parse_mode='HTML',
+        parse_mode="HTML",
     )
 
-    logger.info('Starting pooling...')
+    logger.info("Starting pooling...")
 
     await dp.start_polling(
         bot,
@@ -65,5 +65,5 @@ async def main() -> None:
     )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())

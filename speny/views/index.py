@@ -9,7 +9,7 @@ from speny.config import settings
 routes = RouteTableDef()
 
 
-@routes.get('/')
+@routes.get("/")
 async def index_view(request) -> NoReturn:
     """Index view."""
-    raise HTTPFound(f'{settings.TELEGRAM_URL}/{settings.BOT_USERNAME}')
+    raise HTTPFound(f"{settings.TELEGRAM_URL}/{settings.BOT_USERNAME}")
