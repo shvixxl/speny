@@ -20,7 +20,7 @@ WORKDIR /opt
 
 COPY poetry.lock pyproject.toml ./
 
-RUN poetry install --no-dev
+RUN poetry install
 
 
 FROM base AS runner
