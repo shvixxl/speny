@@ -3,11 +3,10 @@
 from aiogram import Router
 from aiogram.types import Message
 
-
 router = Router()
 
 
-@router.message(commands=['start'])
+@router.message(commands=["start"])
 async def start_handler(message: Message) -> None:
     """Start command handler."""
-    await message.answer('Hello, World!')
+    await message.answer("Hello, World!")

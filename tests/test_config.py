@@ -2,7 +2,7 @@
 
 from aiogram.utils.backoff import BackoffConfig
 
-from speny.config import settings, Settings
+from speny.config import Settings, settings
 
 
 def test_settings():

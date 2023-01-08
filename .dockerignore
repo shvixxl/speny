@@ -1,5 +1,11 @@
+# Exclude
 *
 
+# Include
 !speny
 !poetry.lock
 !pyproject.toml
+
+# Exclude
+__pycache__
+*.py[cod]

@@ -1,15 +1,21 @@
 # Description
 
-- [List of all changes]
+<!-- List all changes included in this Pull Request. -->
+
+-
 
 ---
 
-[Additional information about changes]
+<!-- Add summary about all changes and describe the purpose of this Pull Request. -->
 
-## Related PRs
+## Related Pull Requests
 
-- [List of related pull requests]
+<!-- List related Pull Requests -->
+
+-
 
 ## Tasks
 
-- [ ] [List of tasks that must be done before merging this pull request]
+<!-- List tasks that must be done before merging this Pull Request. -->
+
+- [ ]

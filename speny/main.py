@@ -2,15 +2,13 @@
 
 import asyncio
 
+from aiogram import Bot, Dispatcher
 from aiohttp import web
 
-from aiogram import Bot, Dispatcher
-
 from speny.config import settings
-from speny.logging import logger
 from speny.handlers import router
+from speny.logging import logger
 from speny.views import add_routes
-
 
 app = web.Application()
 
@@ -25,7 +23,7 @@ dp.include_router(router)
 async def start_web() -> None:
     """Starts web server."""
 
-    logger.info('Starting web server...')
+    logger.info("Starting web server...")
 
     runner = web.AppRunner(app)
 
@@ -42,14 +40,14 @@ async def start_web() -> None:
 async def start_bot() -> None:
     """Starts bot."""
 
-    logger.info('Initializing bot...')
+    logger.info("Initializing bot...")
 
     bot = Bot(
         settings.BOT_TOKEN,
-        parse_mode='HTML',
+        parse_mode="HTML",
     )
 
-    logger.info('Starting pooling...')
+    logger.info("Starting pooling...")
 
     await dp.start_polling(
         bot,
@@ -67,5 +65,5 @@ async def main() -> None:
     )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())
