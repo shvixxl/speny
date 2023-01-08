@@ -2,8 +2,9 @@
 name = "speny"
 version = "0.1.0"
 description = "Telegram bot for tracking spending."
-authors = ["shvixxl <contact@shvix.dev>"]
 license = "MIT"
+authors = ["shvixxl <contact@shvix.dev>"]
+repository = "https://github.com/shvixxl/speny"
 
 [tool.poetry.dependencies]
 python = "^3.10"
