@@ -21,7 +21,7 @@ COPY poetry.lock pyproject.toml ./
 
 ENV POETRY_VIRTUALENVS_IN_PROJECT="true"
 
-RUN poetry install --no-interaction
+RUN poetry install --no-interaction --without dev,test
 
 
 FROM base AS runner
