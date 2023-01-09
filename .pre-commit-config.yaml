@@ -1,3 +1,7 @@
+ci:
+  autofix_commit_msg: 🎨 Format code using pre-commit hooks
+  autoupdate_commit_msg: ⬆️ Update pre-commit hook versions
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
