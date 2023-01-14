@@ -33,7 +33,28 @@ pytest-mock = "^3.7.0"
 ruff = "^0.0"
 
 [tool.ruff]
-select = ["F", "E", "W", "I", "UP", "C4", "B", "RUF"]
+select = [
+    "F",   # Pyflakes
+    "E",   # pycodestyle
+    "W",   # pycodestyle
+    "C90", # mccabe
+    "I",   # isort
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "S",   # flake8-bandit
+    "B",   # flake8-bugbear
+    "A",   # flake8-builtins
+    "C4",  # flake8-comprehensions
+    "ICN", # flake8-import-conventions
+    "PT",  # flake8-pytest-style
+    "Q",   # flake8-quotes
+    "RET", # flake8-return
+    "SIM", # flake8-simplify
+    "RUF", # Ruff-specific rules
+]
+
+[tool.ruff.per-file-ignores]
+"tests/**/*.py" = ["S"]
 
 [tool.pytest.ini_options]
 addopts = [
