@@ -10,13 +10,12 @@ on:
   schedule:
     - cron: 16 6 * * 3
 
-env:
-  python_version: "3.10"
-
 jobs:
   run-codeql-analysis:
     name: 🔍 Run CodeQL analysis
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
     steps:
       - name: 🐙 Check out repository
         uses: actions/checkout@v3
