@@ -1,4 +1,4 @@
-name: 🚀 Main
+name: 🧪 Test
 
 on:
   push:
@@ -11,17 +11,7 @@ env:
   python_version: "3.10"
 
 jobs:
-  dependency-review:
-    name: 👁️ Review dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🐙 Check out repository
-        uses: actions/checkout@v3
-
-      - name: 👁️ Review dependencies
-        uses: actions/dependency-review-action@v3
-
-  test:
+  run-test:
     name: 🧪 Run tests
     runs-on: ubuntu-latest
     steps:
@@ -58,23 +48,6 @@ jobs:
         run: |
           poetry install --no-interaction --with test
 
-      - name: 👁️ Run lints
-        run: |
-          poetry run ruff .
-
       - name: 🧪 Run tests
         run: |
           poetry run pytest
-
-  build:
-    name: 🔨 Build image
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🔧 Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: 🔨 Build Docker
-        uses: docker/build-push-action@v3
-        with:
-          cache-from: type=gha
-          cache-to: type=gha,mode=max

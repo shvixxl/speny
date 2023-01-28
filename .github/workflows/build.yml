@@ -1,0 +1,22 @@
+name: 🔨 Build
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-image:
+    name: 🔨 Build image
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: 🔨 Build Docker image
+        uses: docker/build-push-action@v3
+        with:
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
