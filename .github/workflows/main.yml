@@ -11,7 +11,17 @@ env:
   python_version: "3.10"
 
 jobs:
-  run-tests:
+  dependency-review:
+    name: 👁️ Review dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🐙 Check out repository
+        uses: actions/checkout@v3
+
+      - name: 👁️ Review dependencies
+        uses: actions/dependency-review-action@v3
+
+  test:
     name: 🧪 Run tests
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +66,7 @@ jobs:
         run: |
           poetry run pytest
 
-  run-builds:
+  build:
     name: 🔨 Build image
     runs-on: ubuntu-latest
     steps:
