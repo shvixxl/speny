@@ -34,8 +34,8 @@ pytest-mock = "^3.7.0"
 [tool.ruff]
 select = [
     "F",   # Pyflakes
-    "E",   # pycodestyle
-    "W",   # pycodestyle
+    "E",   # pycodestyle - Error
+    "W",   # pycodestyle - Warning
     "C90", # mccabe
     "I",   # isort
     "UP",  # pyupgrade
@@ -49,6 +49,9 @@ select = [
     "Q",   # flake8-quotes
     "RET", # flake8-return
     "SIM", # flake8-simplify
+    "PLC", # Pylint - Convention
+    "PLE", # Pylint - Error
+    "PLR", # Pylint - Refactor
     "TRY", # tryceratops
     "RUF", # Ruff-specific rules
 ]
