@@ -1,0 +1,33 @@
+name: 🔍 Analyze
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+  schedule:
+    - cron: 16 6 * * 3
+
+env:
+  python_version: "3.10"
+
+jobs:
+  run-codeql-analysis:
+    name: 🔍 Run CodeQL analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🐙 Check out repository
+        uses: actions/checkout@v3
+
+      - name: 🔧 Set up CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: python
+
+      - name: 🔨 Build using CodeQL
+        uses: github/codeql-action/autobuild@v2
+
+      - name: 🔍 Run CodeQL analysis
+        uses: github/codeql-action/analyze@v2
