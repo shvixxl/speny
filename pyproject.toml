@@ -49,6 +49,7 @@ select = [
     "Q",   # flake8-quotes
     "RET", # flake8-return
     "SIM", # flake8-simplify
+    "TRY", # tryceratops
     "RUF", # Ruff-specific rules
 ]
 
