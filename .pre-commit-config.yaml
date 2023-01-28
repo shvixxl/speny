@@ -11,8 +11,12 @@ repos:
       - id: check-toml
       - id: check-yaml
       - id: end-of-file-fixer
-      - id: no-commit-to-branch
       - id: trailing-whitespace
+
+  - repo: https://github.com/psf/black
+    rev: 23.1a1
+    hooks:
+      - id: black
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     rev: v0.0.230
@@ -20,8 +24,3 @@ repos:
       - id: ruff
         args:
           - --fix
-
-  - repo: https://github.com/psf/black
-    rev: 23.1a1
-    hooks:
-      - id: black
