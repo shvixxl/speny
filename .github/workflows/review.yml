@@ -1,4 +1,4 @@
-name: 👁️ Dependency review
+name: 👁️ Review
 
 on:
   pull_request:
