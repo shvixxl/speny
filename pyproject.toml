@@ -22,7 +22,7 @@ google-auth-httplib2 = "^0.1.0"
 loguru = "^0.7.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
+black = "^23.7.0"
 ruff = "^0.0"
 pre-commit = "^3.3.3"
 
