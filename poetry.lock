@@ -548,13 +548,13 @@ uritemplate = ">=3.0.1,<5"
 
 [[package]]
 name = "google-auth"
-version = "2.20.0"
+version = "2.22.0"
 description = "Google Authentication Library"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "google-auth-2.20.0.tar.gz", hash = "sha256:030af34138909ccde0fbce611afc178f1d65d32fbff281f25738b1fe1c6f3eaa"},
-    {file = "google_auth-2.20.0-py2.py3-none-any.whl", hash = "sha256:23b7b0950fcda519bfb6692bf0d5289d2ea49fc143717cc7188458ec620e63fa"},
+    {file = "google-auth-2.22.0.tar.gz", hash = "sha256:164cba9af4e6e4e40c3a4f90a1a6c12ee56f14c0b4868d1ca91b32826ab334ce"},
+    {file = "google_auth-2.22.0-py2.py3-none-any.whl", hash = "sha256:d61d1b40897407b574da67da1a833bdc10d5a11642566e506565d1b1a46ba873"},
 ]
 
 [package.dependencies]
@@ -1394,4 +1394,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "d166fcdcde336be37914b33be559c77939d4a23852bdcdbd98b5836f712f1747"
+content-hash = "422fed19e834d2216607bd2f028d9d486a9f2ab60c324a19cc6fd17320ff00c8"
