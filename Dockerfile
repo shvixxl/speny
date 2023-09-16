@@ -1,12 +1,16 @@
-FROM python:3.10-slim AS base
+FROM python:3.11-slim AS base
 
-ENV POETRY_HOME="/opt/poetry"
-ENV VENV="/opt/.venv"
+ENV VIRTUAL_ENV="/opt/venv"
 
-ENV PATH="$POETRY_HOME/bin:$VENV/bin:$PATH"
+ENV PATH="$POETRY_HOME/bin:$VIRTUAL_ENV/bin:$PATH"
 
 
 FROM base AS builder
+
+ENV POETRY_HOME="/opt/poetry"
+ENV POETRY_VIRTUALENVS_IN_PROJECT="true"
+
+ENV PATH="$POETRY_HOME/bin:$PATH"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -19,12 +23,12 @@ WORKDIR /opt
 
 COPY poetry.lock pyproject.toml ./
 
-ENV POETRY_VIRTUALENVS_IN_PROJECT="true"
-
 RUN poetry install --no-interaction --without dev,test
 
 
 FROM base AS runner
+
+ENV HOME="/home/app"
 
 RUN apt-get update \
  && apt-get upgrade -y \
@@ -33,14 +37,12 @@ RUN apt-get update \
  && groupadd app \
  && useradd --shell /sbin/nologin --gid app app
 
-ENV HOME="/home/app"
-
 USER app
 
-COPY --from=builder --chown=app:app $VENV $VENV
+COPY --from=builder --chown=app:app $VIRTUAL_ENV $VIRTUAL_ENV
 
 WORKDIR $HOME/app
 
-COPY . .
+COPY --chown=app:app . .
 
 CMD ["python", "-m", "speny.main"]
