@@ -18,7 +18,7 @@ jobs:
       security-events: write
     steps:
       - name: 🐙 Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 🔧 Set up CodeQL
         uses: github/codeql-action/init@v2
