@@ -24,7 +24,7 @@ jobs:
           python-version: ${{ env.python_version }}
 
       - name: 💾 Load cached Poetry
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.local
           key: ${{ runner.os }}-poetry
@@ -36,7 +36,7 @@ jobs:
 
       - name: 💾 Restore cached virtual environment
         id: restore-cached-virtual-environment
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .venv
           key: ${{ runner.os }}-${{ env.python-version }}-virtual-environment-${{ hashFiles('**/poetry.lock') }}
